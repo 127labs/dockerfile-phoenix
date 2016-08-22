@@ -1,16 +1,25 @@
 #!/bin/bash
 
-# Initial setup
-mix deps.get --only prod
-npm install
-MIX_ENV=prod mix compile
+MIX_ENV=prod
+PORT=4001
+DIR="."
 
-# Compile assets
-brunch build --production
-MIX_ENV=prod mix phoenix.digest
+if [ "$(ls -A $DIR)" ]; then
+  # Initial setup
+  mix deps.get --only prod
+  npm install
+  mix compile
 
-# Custom tasks (like DB migrations)
-MIX_ENV=prod mix ecto.migrate
+  # Compile assets
+  brunch build --production
+  mix phoenix.digest
 
-# Finally run the server
-PORT=4001 MIX_ENV=prod mix phoenix.server
+  # Custom tasks (like DB migrations)
+  mix ecto.migrate
+
+  # Finally run the server
+  #
+  exec mix phoenix.server
+else
+  echo "$DIR is Empty"
+fi
