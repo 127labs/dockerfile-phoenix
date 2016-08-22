@@ -20,5 +20,5 @@ if [ "$(ls -A $DIR)" ]; then
   exec mix phoenix.server
 else
   echo "$DIR is Empty"
-  /bin/bash
+  exec bash
 fi
