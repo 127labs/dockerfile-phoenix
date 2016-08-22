@@ -2,7 +2,7 @@
 
 MIX_ENV=prod
 PORT=4001
-DIR="."
+DIR=$(pwd)
 
 if [ "$(ls -A $DIR)" ]; then
   # Initial setup
