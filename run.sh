@@ -1,5 +1,3 @@
-#!/bin/bash
-
 MIX_ENV=prod
 PORT=4001
 DIR=$(pwd)
@@ -11,7 +9,7 @@ if [ "$(ls -A $DIR)" ]; then
   mix compile
 
   # Compile assets
-  brunch build --production
+  npm run deploy
   mix phoenix.digest
 
   # Custom tasks (like DB migrations)
@@ -22,4 +20,5 @@ if [ "$(ls -A $DIR)" ]; then
   exec mix phoenix.server
 else
   echo "$DIR is Empty"
+  /bin/bash
 fi
