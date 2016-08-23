@@ -5,7 +5,7 @@ DIR=$(pwd)
 
 if [ "$(ls -A $DIR)" ]; then
   mix clean && \
-    mix deps.clean && \
+    mix deps.clean --all && \
     mix deps.get --only prod && \
     npm install && \
     mix compile && \
