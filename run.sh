@@ -1,12 +1,12 @@
 #!/bin/bash
 
-MIX_ENV=prod
-DIR=$(pwd)
+export MIX_ENV=prod
+export APP_DIR=$(pwd)
 
 if [ "$(ls -A $DIR)" ]; then
   mix clean && \
     mix deps.clean --all && \
-    mix deps.get --only prod && \
+    mix deps.get --only $MIX_ENV && \
     npm install && \
     mix compile && \
     npm run deploy && \
