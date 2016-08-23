@@ -1,7 +1,6 @@
 #!/bin/bash
 
 MIX_ENV=prod
-PORT=4001
 DIR=$(pwd)
 
 if [ "$(ls -A $DIR)" ]; then
