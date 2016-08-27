@@ -15,8 +15,8 @@ if [[ "$(ls -A $DIR)" ]]; then
     mix ecto.create && \
     mix ecto.migrate && \
 
-    if [[ $NODE_NAME ]]; then
-      exec elixir --name $NODE_NAME@$NODE_HOST -S mix phoenix.server
+    if [[ $COOKIE && $NODE_NAME ]]; then
+      exec elixir --name $NODE_NAME@$NODE_HOST --cookie $COOKIE -S mix phoenix.server
     else
       exec mix phoenix.server
     fi
