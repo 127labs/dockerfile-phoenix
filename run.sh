@@ -2,6 +2,7 @@
 
 export MIX_ENV=prod
 export APP_DIR=$(pwd)
+export NODE_HOST=$(hostname -I)
 
 if [[ "$(ls -A $DIR)" ]]; then
   mix clean && \
@@ -14,7 +15,7 @@ if [[ "$(ls -A $DIR)" ]]; then
     mix ecto.create && \
     mix ecto.migrate && \
 
-    if [[ $NODE_NAME && $NODE_HOST ]]; then
+    if [[ $NODE_NAME ]]; then
       exec elixir --name $NODE_NAME@$NODE_HOST -S mix phoenix.server
     else
       exec mix phoenix.server
