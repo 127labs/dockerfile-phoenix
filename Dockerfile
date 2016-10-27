@@ -10,7 +10,4 @@ RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.
 RUN apt-get update
 RUN apt-get install -y yarn
 
-COPY ./run.sh /tmp
 COPY ./wait-for-it.sh /tmp
-
-CMD ["/tmp/run.sh"]
