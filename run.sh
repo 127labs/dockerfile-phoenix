@@ -1,13 +1,12 @@
 #!/bin/bash
 
 export APP_DIR=$(pwd)
-export APP_HOST=$(hostname -I)
 
 if [[ "$(ls -A $APP_DIR)" ]]; then
   mix ecto.create && mix ecto.migrate
 
-  if [[ $APP_COOKIE && $APP_NAME ]]; then
-    exec elixir --name $APP_NAME@$APP_HOST --cookie $APP_COOKIE -S mix phoenix.server
+  if [[ $NODE_COOKIE ]]; then
+    exec elixir --name $NODE_NAME --cookie $NODE_COOKIE -S mix phoenix.server
   else
     exec mix phoenix.server
   fi
