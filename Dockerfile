@@ -2,7 +2,7 @@ FROM 127labs/elixir:latest
 
 MAINTAINER Imran Ismail <imran@127labs.com>
 
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
 RUN apt-get install -y nodejs
 
 RUN apt-key adv --keyserver pgp.mit.edu --recv D101F7899D41F3C3
